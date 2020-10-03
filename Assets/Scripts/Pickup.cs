@@ -32,4 +32,5 @@ public class Pickup : MonoBehaviour
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         GetComponent<Rigidbody>().useGravity = true;
     }
+
 }
