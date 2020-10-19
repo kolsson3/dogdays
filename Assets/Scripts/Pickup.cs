@@ -7,6 +7,30 @@ public class Pickup : MonoBehaviour
     public Transform destination;
     public float grabThreshold = 1f;
     bool grabbed = false;
+    
+
+    Vector3 startPos;
+    bool scored = false;
+    private float scoreThresh = 0.25f;
+    public int value = 1;
+    public ScoreManager sm;
+
+    void Start()
+    {
+        startPos = this.transform.position;
+    }
+
+    void Update()
+    {
+        if(!grabbed && !scored)
+        {
+            if(Mathf.Abs(this.transform.position.x - startPos.x) > scoreThresh)
+            {
+                sm.Increase(value);
+                scored = true;
+            }
+        }
+    }
 
     void OnMouseDown()
     {

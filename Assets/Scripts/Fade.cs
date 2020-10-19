@@ -22,10 +22,17 @@ public class Fade : MonoBehaviour
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
         anim.SetBool("Fade", false);
-        SceneManager.LoadScene("Demo");
+        SceneManager.LoadScene("Menu");
     }
     public void Update()
     {
-        Debug.Log(white.color.a);
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            SceneManager.LoadScene("Alpha");
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 }

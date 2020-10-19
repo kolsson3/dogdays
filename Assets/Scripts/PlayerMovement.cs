@@ -14,9 +14,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift)) run = true;
-        if (Input.GetKeyUp(KeyCode.LeftShift)) run = false;
-
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            run = true;
+            this.GetComponent<CapsuleCollider>().enabled = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            run = false;
+            this.GetComponent<CapsuleCollider>().enabled = false;
+        }
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -24,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         {
             x *= 2;
             z *= 2;
+            
         }
         Vector3 move = transform.right * x + transform.forward * z;
 
