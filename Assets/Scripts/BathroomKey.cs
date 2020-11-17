@@ -4,6 +4,8 @@ public class BathroomKey : MonoBehaviour
 {
     public OpenDoor door;
     private Vector3 origin;
+    public GoalManager goal;
+
     void Start()
     {
         origin = transform.position;
@@ -21,8 +23,8 @@ public class BathroomKey : MonoBehaviour
     {
         if (other.gameObject.name == "Bathroom_Lock")
         {
-            Debug.Log(other.gameObject.name);
             door.Unlock();
+            goal.Complete("bathroom");
         }
     }
 }

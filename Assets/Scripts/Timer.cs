@@ -19,24 +19,5 @@ public class Timer : MonoBehaviour
         if (timeRemaining > 0) timeRemaining -= Time.deltaTime;
         timeText.text = seconds < 10 ? timeText.text = minutes + ":0" + seconds : timeText.text = minutes + ":" + seconds; ;
         if (timeRemaining <= 0) SceneManager.LoadScene("Menu");
-        /**
-        if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
-        }
-        if(seconds < 10)
-        {
-            timeText.text = minutes + ":0" + seconds;
-        }
-        else
-        {
-            timeText.text = minutes + ":" + seconds;
-        }
-        if(timeRemaining <= 0 )
-        {
-            SceneManager.LoadScene("Menu");
-        }
-        */
-
     }
 }

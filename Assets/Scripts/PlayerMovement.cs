@@ -6,14 +6,24 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
+    public GoalManager gm;
     public float speed = 15f;
     private float vSpeed = 0f; // current vertical velocity
     public float jumpSpeed = 2.5f;
     float gravity = 9.8f;
     bool run = false;
 
+    public AudioClip bark1;
+    public AudioClip bark2;
+    public AudioClip bark3;
+    public AudioSource source;
+
+    private int barkCount = 0;
+    bool barked = false;
+
     void Update()
     {
+        if (Input.GetButtonDown("Bark")) Bark();
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             run = true;
@@ -49,5 +59,20 @@ public class PlayerMovement : MonoBehaviour
         move.y = vSpeed; // include vertical speed in vel
                         // convert vel to displacement and Move the character:
         controller.Move(move * speed * Time.deltaTime);
+    }
+
+    public void Bark()
+    {
+        int bark = Random.Range(0, 100);
+        if(bark == 0) source.PlayOneShot(bark3, 1.0f);
+        else if (bark < 40) source.PlayOneShot(bark2, 1.0f);
+        else source.PlayOneShot(bark1, 1.0f);
+
+        if (barkCount < 10 && !barked) barkCount++;
+        else
+        {
+            gm.Complete("loud");
+            barked = true;
+        }
     }
 }
