@@ -12,18 +12,16 @@ public class PlayerMovement : MonoBehaviour
     float gravity = 9.8f;
     bool run = false;
 
-    bool canBark = false;
+    public GameObject barkAbility;
+    // public GameObject runAbility;
+    public GameObject sniffAbility;
+
 
     public AudioSource ASBark;
     public AudioSource ASSniff;
     public AudioSource ASWalk;
 
-    //void Start()
-    //{
-    //    ASBark = gameObject.AddComponent<AudioSource>();
-    //    ASSniff = gameObject.AddComponent<AudioSource>();
-    //    ASWalk = gameObject.AddComponent<AudioSource>();
-    //}
+    
 
     void Update()
     {
@@ -71,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (controller.isGrounded == true && controller.velocity.magnitude > 0.01f && ASWalk.isPlaying == false)
         {
-            ASWalk.volume = Random.Range(0.8f, 1);
+            ASWalk.volume = Random.Range(0.2f, 0.5f);
             ASWalk.pitch = Random.Range(0.8f, 1.1f);
             ASWalk.Play();
 
@@ -79,8 +77,8 @@ public class PlayerMovement : MonoBehaviour
 
         // controllers for add-ons
 
-        // sound for barking
-        if (canBark == true)
+        // code for barking
+        if (!barkAbility)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -88,10 +86,20 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // sound for sniffing
-        if (Input.GetKeyDown(KeyCode.E))
+        // code for sniffing
+        if (!sniffAbility)
         {
-            ASSniff.Play();
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ASSniff.Play();
+                ASSniff.loop = true;
+            }
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                ASSniff.Stop();
+                ASSniff.loop = false;
+
+            }
         }
     }
 }

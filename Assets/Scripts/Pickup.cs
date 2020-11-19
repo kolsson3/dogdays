@@ -6,7 +6,7 @@ public class Pickup : MonoBehaviour
 {
     public Transform destination;
     public float grabThreshold = 1f;
-    bool grabbed = false;
+    public bool grabbed = false;
     
 
     Vector3 startPos;

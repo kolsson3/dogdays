@@ -20,6 +20,11 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(levels[Random.Range(0,2)]);
     }
 
+    public void GoToHighScore()
+    {
+        SceneManager.LoadScene("Highscore");
+    }
+
     public void ExitGame()
     {
         Application.Quit();
