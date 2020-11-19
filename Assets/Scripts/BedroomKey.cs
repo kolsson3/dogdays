@@ -9,6 +9,8 @@ public class BedroomKey : MonoBehaviour
     public GameObject sniffAbility;
 
     private Vector3 origin;
+    public GoalManager goal; 
+
     void Start()
     {
         origin = transform.position;
@@ -48,8 +50,8 @@ public class BedroomKey : MonoBehaviour
     {
         if (other.gameObject.name == "Bedroom_Lock")
         {
-            Debug.Log(other.gameObject.name);
             door.Unlock();
+            goal.Complete("bedroom");
         }
     }
 }

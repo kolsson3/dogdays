@@ -12,12 +12,17 @@ public class Pickup : MonoBehaviour
     Vector3 startPos;
     bool scored = false;
     private float scoreThresh = 0.25f;
+    private Color startcolor;
     public int value = 1;
     public ScoreManager sm;
+    Transform oParent;
+
 
     void Start()
     {
         startPos = this.transform.position;
+        startcolor = GetComponent<Renderer>().material.color;
+        oParent = this.transform.parent;
     }
 
     void Update()
@@ -30,14 +35,25 @@ public class Pickup : MonoBehaviour
                 scored = true;
             }
         }
+        if (grabbed)
+        {
+            transform.position = Vector3.MoveTowards(destination.position, transform.position, Time.deltaTime);
+        }
+    }
+
+
+    void OnMouseEnter()
+    {
+        if (Vector3.Distance(transform.position, destination.position) < grabThreshold) GetComponent<Renderer>().material.color = Color.yellow;
+    }
+    void OnMouseExit()
+    {
+        GetComponent<Renderer>().material.color = startcolor;
     }
 
     void OnMouseDown()
     {
-        Vector3 Dest = GameObject.Find("Target").transform.position;
-        float distance = Vector3.Distance(Dest, this.transform.position);
-        Debug.Log(distance); 
-        if(distance <= grabThreshold)
+        if (Vector3.Distance(transform.position, destination.position) < grabThreshold)
         {
             grabbed = true;
             GetComponent<Rigidbody>().useGravity = false;
@@ -47,8 +63,7 @@ public class Pickup : MonoBehaviour
                                         | RigidbodyConstraints.FreezeRotationX
                                         | RigidbodyConstraints.FreezeRotationY
                                         | RigidbodyConstraints.FreezeRotationZ;
-            this.transform.position = destination.position;
-            this.transform.parent = GameObject.Find("Target").transform;
+            this.transform.parent = destination;
         }
     }
 
@@ -56,12 +71,10 @@ public class Pickup : MonoBehaviour
     {
         if (grabbed)
         {
-            this.transform.parent = null;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             GetComponent<Rigidbody>().useGravity = true;
             grabbed = false;
+            this.transform.parent = oParent;
         }
-        
     }
-
 }
