@@ -12,6 +12,19 @@ public class PlayerMovement : MonoBehaviour
     float gravity = 9.8f;
     bool run = false;
 
+    bool canBark = false;
+
+    public AudioSource ASBark;
+    public AudioSource ASSniff;
+    public AudioSource ASWalk;
+
+    //void Start()
+    //{
+    //    ASBark = gameObject.AddComponent<AudioSource>();
+    //    ASSniff = gameObject.AddComponent<AudioSource>();
+    //    ASWalk = gameObject.AddComponent<AudioSource>();
+    //}
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -49,5 +62,36 @@ public class PlayerMovement : MonoBehaviour
         move.y = vSpeed; // include vertical speed in vel
                         // convert vel to displacement and Move the character:
         controller.Move(move * speed * Time.deltaTime);
+
+
+        //sound for 
+        if (controller.velocity.magnitude == 0f && ASWalk.isPlaying == true)
+        {
+            ASWalk.Stop();
+        }
+        if (controller.isGrounded == true && controller.velocity.magnitude > 0.01f && ASWalk.isPlaying == false)
+        {
+            ASWalk.volume = Random.Range(0.8f, 1);
+            ASWalk.pitch = Random.Range(0.8f, 1.1f);
+            ASWalk.Play();
+
+        }
+
+        // controllers for add-ons
+
+        // sound for barking
+        if (canBark == true)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                ASBark.Play();
+            }
+        }
+
+        // sound for sniffing
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ASSniff.Play();
+        }
     }
 }

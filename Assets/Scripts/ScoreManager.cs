@@ -1,6 +1,7 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
 
+
 public class ScoreManager : MonoBehaviour
 {
     Text scoreText;
@@ -21,3 +22,4 @@ public class ScoreManager : MonoBehaviour
         score += value;
     }
 }
+
