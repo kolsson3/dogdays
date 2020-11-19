@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - grabbable
+  - door
+  - button f4
+  - button f5
+  - button f3
+  - button f2
+  - button f1
+  - button f6
+  - Food
   layers:
   - Default
   - TransparentFX
