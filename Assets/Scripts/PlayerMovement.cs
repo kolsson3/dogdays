@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     float gravity = 9.8f;
     bool run = false;
 
-<<<<<<< HEAD
+
     public GameObject barkAbility;
     // public GameObject runAbility;
     public GameObject sniffAbility;
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource ASWalk;
 
     
-=======
+
     public AudioClip bark1;
     public AudioClip bark2;
     public AudioClip bark3;
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private int barkCount = 0;
     bool barked = false;
->>>>>>> b4f612c22ca1826be63d5617b6c77dc79b3557c0
+
 
     void Update()
     {

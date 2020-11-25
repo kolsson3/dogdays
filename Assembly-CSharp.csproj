@@ -52,36 +52,44 @@
     <UnityVersion>2020.1.3f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GlassFragment.cs" />
     <Compile Include="Assets\Scripts\HighScoreManager.cs" />
+    <Compile Include="Assets\Scripts\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Pickup.cs" />
+    <Compile Include="Assets\Scripts\Scroll.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Enviroment\enviroment\Office building\scripts\DoorAction.cs" />
     <Compile Include="Assets\Scripts\RotateCamera.cs" />
     <Compile Include="Assets\Enviroment\enviroment\Office building\scripts\Door.cs" />
     <Compile Include="Assets\Enviroment\enviroment\Office building\scripts\Fix_elevator_fall.cs" />
-    <Compile Include="Assets\Scripts\Attack.cs" />
+    <Compile Include="Assets\Scripts\GoalManager.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\Pickup2.cs" />
+    <Compile Include="Assets\Scripts\Flush.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\Shakeable.cs" />
+    <Compile Include="Assets\DebugMouse.cs" />
     <Compile Include="Assets\Scripts\OpenDoor.cs" />
+    <Compile Include="Assets\Scripts\Safe.cs" />
     <Compile Include="Assets\Scripts\BedroomKey.cs" />
     <Compile Include="Assets\Scripts\Menu.cs" />
-    <Compile Include="Assets\Scripts\Toilet_Open.cs" />
     <Compile Include="Assets\Enviroment\enviroment\Office building\scripts\pass_on_parent.cs" />
+    <Compile Include="Assets\Scripts\SecretDoor.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
+    <Compile Include="Assets\Scripts\MaterialManager.cs" />
     <Compile Include="Assets\Scripts\RotateItem.cs" />
+    <Compile Include="Assets\Scripts\NightVisionEffect.cs" />
     <Compile Include="Assets\Scripts\BackToMenu.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
+    <Compile Include="Assets\Scripts\MultipleMaterialManager.cs" />
     <Compile Include="Assets\Scripts\Fade.cs" />
     <Compile Include="Assets\Enviroment\enviroment\Office building\scripts\evelator_controll.cs" />
     <Compile Include="Assets\Scripts\BathroomKey.cs" />
-    <Compile Include="Assets\Scripts\NightVisionEffect.cs" />
-    <Compile Include="Assets\Scripts\CameraManager.cs" />
-    <Compile Include="Assets\Scripts\MaterialManager.cs" />
-    <Compile Include="Assets\Scripts\MultipleMaterialManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\AddOns\Mg3D_Food\README.txt" />
      <None Include="Assets\Vision\AlwaysVisible.shader" />
+     <None Include="Assets\Shaders\3DText.shader" />
      <None Include="Assets\Simple city plain\Read_me.txt" />
      <None Include="Assets\Vision\NightVisionShader.shader" />
      <None Include="Assets\Enviroment\enviroment\Office building\Read me.txt" />
