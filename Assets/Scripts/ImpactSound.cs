@@ -12,7 +12,7 @@ public class ImpactSound : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
+    
     private void OnCollisionEnter(Collision other) {
         source.Play();
         Destroy(GetComponent<BoxCollider>());
