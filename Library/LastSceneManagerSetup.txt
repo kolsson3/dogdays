@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/NamRelease.unity
+=======
+- path: Assets/Scenes/Sound.unity
+>>>>>>> sound
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -20,6 +20,9 @@ public class Pickup : MonoBehaviour
     private Material opaque;
     private Material transparent;
     private Renderer rend;
+    public AudioSource source;
+    public AudioClip pickupSFX;
+
 
     void Start()
     {
@@ -71,6 +74,7 @@ public class Pickup : MonoBehaviour
                                         | RigidbodyConstraints.FreezeRotationZ;
             this.transform.parent = destination;
             rend.material = transparent;
+            source.PlayOneShot(pickupSFX, 1.0f);
         }
     }
 
