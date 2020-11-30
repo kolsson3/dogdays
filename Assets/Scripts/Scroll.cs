@@ -20,7 +20,7 @@ public class Scroll : MonoBehaviour
         prompt = GameObject.Find("Prompt");
         downscroll = transform.position;
         upscroll = downscroll;
-        upscroll.y = upscroll.y + 150;
+        upscroll.y = upscroll.y + (Screen.height/2);
     }
 
     void Update()

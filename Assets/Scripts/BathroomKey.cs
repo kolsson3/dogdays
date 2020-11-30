@@ -48,7 +48,7 @@ public class BathroomKey : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Bathroom_Lock")
+        if (other.gameObject.name == "BathroomKnob")
         {
             door.Unlock();
             goal.Complete("bathroom");
