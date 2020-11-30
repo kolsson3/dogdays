@@ -14,17 +14,16 @@ public class PlayerMovement : MonoBehaviour
     bool run = false;
 
 
-    public GameObject barkAbility;
+    //public GameObject barkAbility;
     // public GameObject runAbility;
-    public GameObject sniffAbility;
+    //public GameObject sniffAbility;
 
 
-    public AudioSource ASBark;
-    public AudioSource ASSniff;
-    public AudioSource ASWalk;
 
-    
+    //public AudioSource ASWalk;
 
+
+    public AudioSource sniff;
     public AudioClip bark1;
     public AudioClip bark2;
     public AudioClip bark3;
@@ -75,44 +74,37 @@ public class PlayerMovement : MonoBehaviour
 
 
         //sound for 
-        if (controller.velocity.magnitude == 0f && ASWalk.isPlaying == true)
-        {
-            ASWalk.Stop();
-        }
-        if (controller.isGrounded == true && controller.velocity.magnitude > 0.01f && ASWalk.isPlaying == false)
-        {
-            ASWalk.volume = Random.Range(0.2f, 0.5f);
-            ASWalk.pitch = Random.Range(0.8f, 1.1f);
-            ASWalk.Play();
+        //if (controller.velocity.magnitude == 0f && ASWalk.isPlaying == true)
+        //{
+        //    ASWalk.Stop();
+        //}
+        //if (controller.isGrounded == true && controller.velocity.magnitude > 0.01f && ASWalk.isPlaying == false)
+        //{
+        //    ASWalk.volume = Random.Range(0.2f, 0.5f);
+        //    ASWalk.pitch = Random.Range(0.8f, 1.1f);
+        //    ASWalk.Play();
 
-        }
+        //}
 
         // controllers for add-ons
 
-        // code for barking
-        if (!barkAbility)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                ASBark.Play();
-            }
-        }
+
 
         // code for sniffing
-        if (!sniffAbility)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ASSniff.Play();
-                ASSniff.loop = true;
-            }
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                ASSniff.Stop();
-                ASSniff.loop = false;
+        //if (!sniffAbility)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.E))
+        //    {
+        //        ASSniff.Play();
+        //        ASSniff.loop = true;
+        //    }
+        //    if (Input.GetKeyUp(KeyCode.E))
+        //    {
+        //        ASSniff.Stop();
+        //        ASSniff.loop = false;
 
-            }
-        }
+        //    }
+        //}
     }
 
     public void Bark()

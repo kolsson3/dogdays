@@ -25,6 +25,11 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Highscore");
     }
 
+    public void GoToEnterName()
+    {
+        SceneManager.LoadScene("EnterName");
+    }
+
     public void ExitGame()
     {
         Application.Quit();
