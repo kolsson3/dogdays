@@ -17,6 +17,9 @@ public class Pickup : MonoBehaviour
     public ScoreManager sm;
     Transform oParent;
 
+    public AudioSource source;
+    public AudioClip pickupSFX;
+
 
     void Start()
     {
@@ -64,6 +67,7 @@ public class Pickup : MonoBehaviour
                                         | RigidbodyConstraints.FreezeRotationY
                                         | RigidbodyConstraints.FreezeRotationZ;
             this.transform.parent = destination;
+            source.PlayOneShot(pickupSFX, 1.0f);
         }
     }
 
