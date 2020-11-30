@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Demo.unity
-=======
-- path: Assets/Scenes/KrisScene.unity
->>>>>>> krisbranch
+- path: Assets/Scenes/NamRelease.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

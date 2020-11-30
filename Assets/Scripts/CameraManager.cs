@@ -6,7 +6,7 @@ public class CameraManager : MonoBehaviour
 {
     public GameObject defaultCam;
     public GameObject sniffVisionCam;
-    public GameObject sniffAbility;
+    public GameObject sniffFood;
 
     void Start()
     {
@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour
 
     void Update()
     {
-        if(!sniffAbility)
+        if(!sniffFood)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
