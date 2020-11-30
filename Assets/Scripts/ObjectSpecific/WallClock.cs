@@ -14,7 +14,6 @@ public class WallClock : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Vector3.Distance(this.transform.position, start));
         if(!triggered && Vector3.Distance(this.transform.position, start) > 1)
         {
             triggered = true;

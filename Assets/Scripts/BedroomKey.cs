@@ -21,7 +21,7 @@ public class BedroomKey : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Bedroom_Lock")
+        if (other.gameObject.name == "BedroomKnob")
         {
             door.Unlock();
             goal.Complete("bedroom");

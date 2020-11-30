@@ -13,7 +13,8 @@ public class OpenDoor : MonoBehaviour
     void OnMouseDown()
     {
         Vector3 Dest = GameObject.Find("Target").transform.position;
-        float distance = Vector3.Distance(Dest, this.transform.position);
+        Vector3 Knob = gameObject.transform.GetChild(0).transform.position;
+        float distance = Vector3.Distance(Dest, Knob);
         if (distance <= openThresh)
         {
             if (!locked)

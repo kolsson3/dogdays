@@ -33,8 +33,9 @@ public class Safe : MonoBehaviour
 
     void Update()
     {
-        if (L1 == 3 && R2 == 1 && L3 == 2 && !opened)
+        if (!opened && L1 == 3 && R2 == 1 && L3 == 2)
         {
+            transform.GetChild(0).gameObject.SetActive(true);
             GameObject.Find("SafeDoor").GetComponent<Animator>().SetTrigger("Open");
             opened = true;
             scoreManager.BlowUp(1000);
