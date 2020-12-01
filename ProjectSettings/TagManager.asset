@@ -15,6 +15,7 @@ TagManager:
   - Food
   - Key
   - Par
+  - Floor
   layers:
   - Default
   - TransparentFX
