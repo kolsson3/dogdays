@@ -7,6 +7,7 @@ public class GoalManager : MonoBehaviour
 {
     public int displayCount = 5;
     Goal[] goals;
+    Goal[] displayGoals;
     string[] tips;
     string goalText = "";
     string completeText;
@@ -31,15 +32,18 @@ public class GoalManager : MonoBehaviour
             new Goal("Flood the bathroom", "flood"),
             new Goal("Ruin someone's sleep", "pillow"),
             new Goal("Cause $500 in damage", "damage"),
-            new Goal("Find the secret safe", "safe_get")
+            new Goal("Find the secret safe", "safe_get"),
+            new Goal("Appreciate art", "art")
             
         };
         Shuffle(goals);
         Shuffle(tips);
+        displayGoals = new Goal[displayCount];
         for(int i = 0; i < displayCount; i++)
         {
             if (goals[i] != null && !goals[i].completed)
             {
+                displayGoals[i] = goals[i];
                 goalText += goals[i].text + "\n";
             }
         }
@@ -53,7 +57,7 @@ public class GoalManager : MonoBehaviour
 
     public void Complete(string id)
     {
-        foreach(Goal g in goals)
+        foreach(Goal g in displayGoals)
         {
             if (g.id == id && !g.completed)
             {
@@ -72,7 +76,7 @@ public class GoalManager : MonoBehaviour
             }
         }
         goalText = "";
-        foreach (Goal g in goals)
+        foreach (Goal g in displayGoals)
         {
             if (g != null && !g.completed)
             {
