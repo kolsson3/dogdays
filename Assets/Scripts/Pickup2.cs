@@ -5,31 +5,60 @@ using UnityEngine;
 public class Pickup2 : MonoBehaviour
 {
     public Transform destination;
+    public float grabThreshold = 1f;
     bool grabbed = false;
-    private float grabThreshold = 1f;
+
+
+    Vector3 startPos;
+    bool scored = false;
+    private float scoreThresh = 0.25f;
     private Color startcolor;
+    public int value = 1;
+    public ScoreManager sm;
+    Transform oParent;
+
+    private Material opaque;
+    private Material transparent;
+    private Renderer rend;
+
     void Start()
     {
-        startcolor = GetComponent<Renderer>().material.color;
-    }
-
-    void OnMouseEnter()
-    {
-        if (Vector3.Distance(transform.position, destination.position) < grabThreshold) GetComponent<Renderer>().material.color = Color.yellow;
-    }
-
-    void OnMouseExit()
-    {
-        GetComponent<Renderer>().material.color = startcolor;
+        sm = GameObject.Find("Score").GetComponent<ScoreManager>();
+        destination = GameObject.Find("Target").transform;
+        rend = GetComponent<Renderer>();
+        opaque = rend.material;
+        transparent = Resources.Load("PolygonTown_01_O", typeof(Material)) as Material;
+        startPos = this.transform.position;
+        startcolor = rend.material.color;
+        oParent = this.transform.parent;
     }
 
     void Update()
     {
-        if(grabbed)
+        if (!grabbed && !scored)
         {
-            transform.position = Vector3.MoveTowards(destination.transform.position, transform.position, Time.deltaTime);
+            if (Vector3.Distance(this.transform.position, startPos) > scoreThresh)
+            {
+                sm.Increase(value, this.gameObject);
+                scored = true;
+            }
+        }
+        if (grabbed)
+        {
+            transform.position = Vector3.MoveTowards(destination.position, transform.position, Time.deltaTime);
         }
     }
+
+
+    void OnMouseEnter()
+    {
+        if (Vector3.Distance(transform.position, destination.position) < grabThreshold && !grabbed) GetComponent<Renderer>().material.color = Color.yellow;
+    }
+    void OnMouseExit()
+    {
+        if (!grabbed) GetComponent<Renderer>().material.color = startcolor;
+    }
+
     void OnMouseDown()
     {
         if (Vector3.Distance(transform.position, destination.position) < grabThreshold)
@@ -42,17 +71,20 @@ public class Pickup2 : MonoBehaviour
                                         | RigidbodyConstraints.FreezeRotationX
                                         | RigidbodyConstraints.FreezeRotationY
                                         | RigidbodyConstraints.FreezeRotationZ;
+            this.transform.parent = destination;
+            rend.material = transparent;
         }
     }
 
     void OnMouseUp()
     {
-        if(grabbed)
+        if (grabbed)
         {
-            grabbed = false;
-            GetComponent<Rigidbody>().useGravity = true;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            GetComponent<Rigidbody>().useGravity = true;
+            grabbed = false;
+            this.transform.parent = oParent;
+            rend.material = opaque;
         }
-        
     }
 }

@@ -23,6 +23,8 @@ public class Pickup : MonoBehaviour
 
     void Start()
     {
+        sm = GameObject.Find("Score").GetComponent<ScoreManager>();
+        destination = GameObject.Find("Target").transform;
         rend = GetComponent<Renderer>();
         opaque = rend.material;
         transparent = Resources.Load("PolygonTown_01_O", typeof(Material)) as Material;
