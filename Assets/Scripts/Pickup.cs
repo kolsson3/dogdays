@@ -6,7 +6,7 @@ public class Pickup : MonoBehaviour
 {
     public Transform destination;
     public float grabThreshold = 1f;
-    public bool grabbed = false;
+    bool grabbed = false;
     
 
     Vector3 startPos;
@@ -17,11 +17,17 @@ public class Pickup : MonoBehaviour
     public ScoreManager sm;
     Transform oParent;
 
+    private Material opaque;
+    private Material transparent;
+    private Renderer rend;
 
     void Start()
     {
+        rend = GetComponent<Renderer>();
+        opaque = rend.material;
+        transparent = Resources.Load("PolygonTown_01_O", typeof(Material)) as Material;
         startPos = this.transform.position;
-        startcolor = GetComponent<Renderer>().material.color;
+        startcolor = rend.material.color;
         oParent = this.transform.parent;
     }
 
@@ -29,9 +35,9 @@ public class Pickup : MonoBehaviour
     {
         if(!grabbed && !scored)
         {
-            if(Mathf.Abs(this.transform.position.x - startPos.x) > scoreThresh)
+            if(Vector3.Distance(this.transform.position, startPos) > scoreThresh)
             {
-                sm.Increase(value);
+                sm.Increase(value, this.gameObject);
                 scored = true;
             }
         }
@@ -44,11 +50,11 @@ public class Pickup : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if (Vector3.Distance(transform.position, destination.position) < grabThreshold) GetComponent<Renderer>().material.color = Color.yellow;
+        if (Vector3.Distance(transform.position, destination.position) < grabThreshold && !grabbed) GetComponent<Renderer>().material.color = Color.yellow;
     }
     void OnMouseExit()
     {
-        GetComponent<Renderer>().material.color = startcolor;
+        if(!grabbed) GetComponent<Renderer>().material.color = startcolor;
     }
 
     void OnMouseDown()
@@ -64,6 +70,7 @@ public class Pickup : MonoBehaviour
                                         | RigidbodyConstraints.FreezeRotationY
                                         | RigidbodyConstraints.FreezeRotationZ;
             this.transform.parent = destination;
+            rend.material = transparent;
         }
     }
 
@@ -75,6 +82,7 @@ public class Pickup : MonoBehaviour
             GetComponent<Rigidbody>().useGravity = true;
             grabbed = false;
             this.transform.parent = oParent;
+            rend.material = opaque;
         }
     }
 }
