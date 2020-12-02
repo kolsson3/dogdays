@@ -4,6 +4,8 @@ public class GlassFragment : MonoBehaviour
 {
     public ScoreManager sm;
     public int value = 5;
+    public AudioClip smash;
+    public AudioSource source;
 
     void OnTriggerEnter(Collider other)
     {
@@ -12,6 +14,7 @@ public class GlassFragment : MonoBehaviour
             GetComponent<Collider>().isTrigger = false;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             sm.Increase(value);
+            source.PlayOneShot(smash, 1.0f);
         }
     }   
 }

@@ -21,8 +21,12 @@ public class Pickup : MonoBehaviour
     private Material transparent;
     private Renderer rend;
 
+    public AudioSource source;
+    public AudioClip pickupSFX;
+
     void Start()
     {
+        source = GetComponent<AudioSource>();
         sm = GameObject.Find("Score").GetComponent<ScoreManager>();
         destination = GameObject.Find("Target").transform;
         rend = GetComponent<Renderer>();
@@ -73,6 +77,7 @@ public class Pickup : MonoBehaviour
                                         | RigidbodyConstraints.FreezeRotationZ;
             this.transform.parent = destination;
             rend.material = transparent;
+            if(source != null) source.PlayOneShot(pickupSFX, 1.0f);
         }
     }
 
