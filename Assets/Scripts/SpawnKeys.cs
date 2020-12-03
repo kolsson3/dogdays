@@ -21,7 +21,7 @@ public class SpawnKeys : MonoBehaviour
         int bedKeyPos = (int)Random.Range(0, 3);
         bathKey.transform.position = bathKeyposList[bathKeyPos].transform.position;
         bathKey.SetActive(true);
-        bedKey.transform.position = bedKeyposList[bathKeyPos].transform.position;
+        bedKey.transform.position = bedKeyposList[bedKeyPos].transform.position;
         bedKey.SetActive(true);
     }
 

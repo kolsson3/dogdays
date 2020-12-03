@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     Text timeText;
+    public GameObject scrMng;
     public float timeRemaining = 300;
 
     void Start()
@@ -18,6 +19,12 @@ public class Timer : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeRemaining % 60);
         if (timeRemaining > 0) timeRemaining -= Time.deltaTime;
         timeText.text = seconds < 10 ? timeText.text = minutes + ":0" + seconds : timeText.text = minutes + ":" + seconds; ;
-        if (timeRemaining <= 0) SceneManager.LoadScene("Menu");
+        if (timeRemaining <= 0)
+        {
+            int score = scrMng.GetComponent<ScoreManager>().score;
+            
+            SceneManager.LoadScene("Menu");
+        }
     }
+
 }
