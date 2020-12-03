@@ -18,6 +18,7 @@ public class SniffAbility : MonoBehaviour
     void Start()
     {
         keys = GameObject.FindGameObjectsWithTag("Key");
+        mats = new Material[keys.Length];
         for(int i = 0; i < keys.Length; i++)
         {
             mats[i] = keys[i].GetComponent<Renderer>().material;
