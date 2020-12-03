@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
@@ -22,9 +24,32 @@ public class Timer : MonoBehaviour
         if (timeRemaining <= 0)
         {
             int score = scrMng.GetComponent<ScoreManager>().score;
-            
+            //HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = PlayerPrefs.GetString("currName") };
+
+            string jsonString = PlayerPrefs.GetString("highscoreTable");
+            Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+
+            int index = highscores.highscoreEntryList.FindIndex(player => player.name == PlayerPrefs.GetString("currName"));
+            if (index >= 0)
+            {
+                highscores.highscoreEntryList[index].score = score;
+            }
+            string json = JsonUtility.ToJson(highscores);
+            PlayerPrefs.SetString("highscoreTable", json);
+            PlayerPrefs.Save();
             SceneManager.LoadScene("Menu");
         }
     }
 
+    [System.Serializable]
+    private class HighscoreEntry
+    {
+        public int score;
+        public string name;
+    }
+
+    private class Highscores
+    {
+        public List<HighscoreEntry> highscoreEntryList;
+    }
 }

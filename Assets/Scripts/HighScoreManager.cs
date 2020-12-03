@@ -25,6 +25,7 @@ public class HighScoreManager : MonoBehaviour
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
         highscoreEntryList = highscores.highscoreEntryList;
 
+
         for (int i = 0; i < highscoreEntryList.Count; i++)
         {
             for (int j = i + 1; j < highscoreEntryList.Count; j++)
@@ -43,15 +44,6 @@ public class HighScoreManager : MonoBehaviour
         {
             CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
         }
-
-        // Reset the highsores table to empty
-        /*
-        highscoreEntryList = new List<HighscoreEntry>(); 
-        string json = JsonUtility.ToJson(highscoreEntryList);
-        PlayerPrefs.SetString("highscoreTable", json);
-        PlayerPrefs.Save();
-        Debug.Log(PlayerPrefs.GetString("highscoreTable"));
-        */
 
     }
 
@@ -96,7 +88,7 @@ public class HighScoreManager : MonoBehaviour
 
     private void AddHighscoreEntry(int score, string name)
     {
-        HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = name.Trim()};
+        HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = name.Trim() };
 
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
@@ -111,7 +103,7 @@ public class HighScoreManager : MonoBehaviour
         {
             highscores.highscoreEntryList.Add(highscoreEntry);
         }
-        
+
 
         string json = JsonUtility.ToJson(highscores);
         PlayerPrefs.SetString("highscoreTable", json);

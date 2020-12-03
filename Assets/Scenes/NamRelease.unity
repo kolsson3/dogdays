@@ -17281,8 +17281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8a7717c7311e3b4c9b83195fd081963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrMng: {fileID: 0}
-  timeRemaining: 300
+  scrMng: {fileID: 2029138853}
+  timeRemaining: 15
 --- !u!114 &709221263
 MonoBehaviour:
   m_ObjectHideFlags: 0
