@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Timer : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Timer : MonoBehaviour
     public AudioSource source;
     public AudioClip tires;
     public AudioClip door;
+    public GameObject scrMng;
 
     void Start()
     {
@@ -43,6 +45,24 @@ public class Timer : MonoBehaviour
         timeRemaining += time;
     }
 
+    public void SetFinalScore()
+    {
+        int score = scrMng.GetComponent<ScoreManager>().score;
+        //HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = PlayerPrefs.GetString("currName") };
+
+        string jsonString = PlayerPrefs.GetString("highscoreTable");
+        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+
+        int index = highscores.highscoreEntryList.FindIndex(player => player.name == PlayerPrefs.GetString("currName"));
+        if (index >= 0)
+        {
+            highscores.highscoreEntryList[index].score = score;
+        }
+        string json = JsonUtility.ToJson(highscores);
+        PlayerPrefs.SetString("highscoreTable", json);
+        PlayerPrefs.Save();
+    }
+
     IEnumerator EndSound()
     {
         source.PlayOneShot(tires, 1.0f);
@@ -59,6 +79,19 @@ public class Timer : MonoBehaviour
         yield return new WaitUntil(() => white.color.a == 1);
         anim.SetBool("Fade", false);
         anim.StopPlayback();
+        SetFinalScore();
         SceneManager.LoadScene("Menu");
+    }
+
+    [System.Serializable]
+    private class HighscoreEntry
+    {
+        public int score;
+        public string name;
+    }
+
+    private class Highscores
+    {
+        public List<HighscoreEntry> highscoreEntryList;
     }
 }
