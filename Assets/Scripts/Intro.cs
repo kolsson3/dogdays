@@ -7,6 +7,7 @@ public class Intro : MonoBehaviour
     public GameObject clock;
     public GameObject player;
     public GameObject cam;
+    public GameObject cam2;
     Animator anim;
 
     void Start()
@@ -20,6 +21,7 @@ public class Intro : MonoBehaviour
         {
             clock.GetComponent<Timer>().enabled = true;
             cam.GetComponent<MouseLook>().enabled = true;
+            cam2.GetComponent<MouseLook>().enabled = true;
             player.GetComponent<PlayerMovement>().enabled = true;
             this.gameObject.SetActive(false);
         }

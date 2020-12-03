@@ -3314,6 +3314,8 @@ MonoBehaviour:
   grabThreshold: 5
   value: 1
   sm: {fileID: 0}
+  source: {fileID: 0}
+  pickupSFX: {fileID: 0}
 --- !u!54 &653081388
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3848,7 +3850,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Beta
+          m_StringArgument: Game
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &729477661
@@ -6735,7 +6737,7 @@ RectTransform:
   m_GameObject: {fileID: 1285787450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 1256079274}
   m_RootOrder: 1
@@ -6765,7 +6767,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 93820710a9db26e4a869474d846eadb9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ed83aa7680393634bbaf8b734754d2e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

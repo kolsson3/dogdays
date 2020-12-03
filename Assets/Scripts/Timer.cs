@@ -11,6 +11,9 @@ public class Timer : MonoBehaviour
     public float timeRemaining = 300;
     private bool toggle = false;
     private bool ended = false;
+    public AudioSource source;
+    public AudioClip tires;
+    public AudioClip door;
 
     void Start()
     {
@@ -27,8 +30,8 @@ public class Timer : MonoBehaviour
         {
             ended = true;
             timeRemaining = 0;
-            // StartCoroutine(Fading());
-            testEnd();
+            StartCoroutine(EndSound());
+            StartCoroutine(Fading());
         }
         else timeText.text = seconds < 10 ? timeText.text = minutes + ":0" + seconds : timeText.text = minutes + ":" + seconds; ;
         if (toggle && seconds % 2 == 1) timeText.fontStyle = FontStyle.Bold;
@@ -40,32 +43,22 @@ public class Timer : MonoBehaviour
         timeRemaining += time;
     }
 
+    IEnumerator EndSound()
+    {
+        source.PlayOneShot(tires, 1.0f);
+        yield return new WaitUntil(() => !source.isPlaying);
+        source.PlayOneShot(door, 1.0f);
+        yield return new WaitUntil(() => !source.isPlaying);
+
+    }
+
     IEnumerator Fading()
     {
+        yield return new WaitUntil(() => !source.isPlaying);
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
         anim.SetBool("Fade", false);
         anim.StopPlayback();
-        //SceneManager.LoadScene("Menu");
-        testEnd();
+        SceneManager.LoadScene("Menu");
     }
-
-    void testEnd()
-    {
-        GameObject cash = GameObject.Find("Cash");
-        cash.transform.position = new Vector3(Screen.width/2, Screen.height/10, 0f);
-        cash.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        GameObject score = GameObject.Find("Score");
-        score.GetComponent<ScoreManager>().Results();
-        GameObject player = GameObject.Find("Player");
-        player.GetComponent<PlayerMovement>().enabled = false;
-        GameObject cam = GameObject.Find("Camera");
-        cam.GetComponent<MouseLook>().xRotation = 0f;
-        cam.GetComponent<MouseLook>().enabled = false;
-        Physics.gravity = new Vector3(0, -1.0F, 0);
-        cam.transform.rotation = Quaternion.identity;
-        player.transform.position = new Vector3(-1.10789061f, -0.519999981f, -3.75999999f);
-        player.transform.rotation = Quaternion.identity;
-    }
-
 }
