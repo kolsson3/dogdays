@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4482475, g: 0.49827462, b: 0.5755831, a: 1}
+  m_IndirectSpecularColor: {r: 0.44824737, g: 0.4982744, b: 0.5755825, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1441,6 +1441,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1853703561699140394, guid: 2a26a3d8acc92b44286e0e05d4d0e10e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1853703561939771658, guid: 2a26a3d8acc92b44286e0e05d4d0e10e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1489,5 +1493,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1853703561699140394, guid: 2a26a3d8acc92b44286e0e05d4d0e10e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2a26a3d8acc92b44286e0e05d4d0e10e, type: 3}

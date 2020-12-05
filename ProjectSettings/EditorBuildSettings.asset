@@ -8,12 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: b3e4167058009314881c5532a8d03a71
-  - enabled: 0
-    path: Assets/Scenes/Alpha.unity
-    guid: 54e9644b66e21b441b9a6eb04b6dad58
-  - enabled: 1
-    path: Assets/Scenes/Beta.unity
-    guid: 39a6ed22961015e42a577b9ce3c5af84
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 60c74dfcaf095d4488b0dd161be96756
@@ -23,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Highscore.unity
     guid: 815f132e79104174e88b1c7471f3fa4e
+  - enabled: 0
+    path: Assets/Scenes/Alpha.unity
+    guid: 54e9644b66e21b441b9a6eb04b6dad58
+  - enabled: 0
+    path: Assets/Scenes/Beta.unity
+    guid: 39a6ed22961015e42a577b9ce3c5af84
   m_configObjects: {}

@@ -49,7 +49,7 @@ public class HighScoreManager : MonoBehaviour
 
     private void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList)
     {
-        float containerHeight = 40f;
+        float containerHeight = 45f;
         Transform entryTransform = Instantiate(entryTemp, container);
         RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
         entryRectTransform.anchoredPosition = new Vector2(0, -containerHeight * transformList.Count);
