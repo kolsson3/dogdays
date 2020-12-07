@@ -1,67 +1,59 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
-using System.Collections;
 
+//Manages the scoring for the game.
 public class ScoreManager : MonoBehaviour
 {
-    Text scoreText;
-    public int score = 0;
-    
-    public GoalManager goal;
-    bool blowUp = false;
-    bool scoreGoal = false;
-    int scoreToAdd = 0;
-
-    ArrayList destruction;
+    Text scoreText; //Score text.
+    public int score = 0; //Total score.
+    public GoalManager goal; //Goal Manager reference.
+    bool scoreGoal = false; //Has the score goal been met?
+    bool blowUp = false; //Is the score 'blowing up'?
+    int scoreToAdd = 0; //Score to add when blowing up.
+    ScoreTracker track; //Score Tracker reference.
 
     void Start()
     {
+        //Get score text and score tracker.
         scoreText = GetComponent<Text>();
-        destruction = new ArrayList();
+        track = GameObject.Find("ScoreKeeper").GetComponent<ScoreTracker>();
     }
 
     void Update()
     {
+        //Set score text.
         scoreText.text = "$" + score;
+        //If score meets goal amount, trigger goal.
         if (!scoreGoal && score >= 500)
         {
             scoreGoal = true;
             goal.Complete("damage");
         }
+        //If blowing up, increment score and decrement score to add.
         if (blowUp)
         {
             score++;
             scoreToAdd--;
         }
+        //Stop blowup if no more score to add.
         if(scoreToAdd <= 0)
         {
             blowUp = false;
         }
+        //Update score tracker for high scores.
+        track.score = score;
     }
 
-    public void Increase(int value, GameObject obj)
-    {
-        score += value;
-        destruction.Add(obj);
-    }
-
+    //Increases the score value
     public void Increase(int value)
     {
         score += value;
     }
 
+    //Sets an amount to increment the score over time for large amounts.
     public void BlowUp(int value)
     {
         blowUp = true;
         scoreToAdd = value;
-    }
-
-    public void Results()
-    {
-        foreach(GameObject o in destruction)
-        {
-            Debug.Log(o.name);
-            Instantiate(o, new Vector3(0f, 0f, 0f), Quaternion.identity);
-        }
     }
 }

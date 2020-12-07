@@ -18,9 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Highscore.unity
     guid: 815f132e79104174e88b1c7471f3fa4e
   - enabled: 0
-    path: Assets/Scenes/Alpha.unity
+    path: Assets/Scenes/Deprecated/Alpha.unity
     guid: 54e9644b66e21b441b9a6eb04b6dad58
   - enabled: 0
-    path: Assets/Scenes/Beta.unity
+    path: Assets/Scenes/Deprecated/Beta.unity
     guid: 39a6ed22961015e42a577b9ce3c5af84
   m_configObjects: {}
